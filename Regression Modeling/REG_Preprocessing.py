@@ -102,7 +102,7 @@ def brief_reg_metrics(model_name, actual, predicted):
     """Calculate brief regression metrics.
     
     Args:
-        model (str): The model name identifier
+        model_name (str): The model name identifier
         actual (series): Contains the test label values
         predicted (series): Contains the predicted values
         
