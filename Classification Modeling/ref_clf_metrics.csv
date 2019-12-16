@@ -1,0 +1,25 @@
+Model,Accuracy,Precision,Recall,F1 Score,ROC AUC
+Logistic Regression(O),0.88,0.933,0.56,0.7,0.977
+Logistic Regression(R),0.88,0.933,0.56,0.7,0.979
+Logistic Regression(P),0.9,0.941,0.64,0.762,0.979
+k-NN(O),0.9,0.941,0.64,0.762,0.894
+k-NN(R),0.9,0.941,0.64,0.762,0.936
+k-NN(P),0.91,0.944,0.68,0.791,0.96
+SVM(O),0.91,0.944,0.68,0.791,0.892
+SVM(R),0.9,0.941,0.64,0.762,0.905
+SVM(P),0.92,0.947,0.72,0.818,0.891
+Gaussian Naive Bayesian (O),0.94,0.828,0.96,0.889,0.988
+Gaussian Naive Bayesian(R),0.93,0.846,0.88,0.863,0.988
+Gaussian Naive Bayesian(P),0.94,0.852,0.92,0.885,0.983
+Decision Tree(O),0.91,0.9,0.72,0.8,0.971
+Decision Tree(R),0.9,0.857,0.72,0.783,0.949
+Decision Tree(P),0.93,0.95,0.76,0.844,0.929
+Random Forest(O),0.92,0.947,0.72,0.818,0.979
+Random Forest(R),0.92,0.947,0.72,0.818,0.984
+Random Forest(P),0.92,0.947,0.72,0.818,0.978
+XGBoost(O),0.92,0.947,0.72,0.818,0.981
+XGBoost(R),0.91,0.944,0.68,0.791,0.984
+XGBoost(P),0.91,0.944,0.68,0.791,0.993
+Neural Network(O),0.8,0.857,0.24,0.375,0.808
+Neural Network(R),0.67,0.426,0.92,0.582,0.889
+Neural Network(P),0.89,0.938,0.6,0.732,0.971
