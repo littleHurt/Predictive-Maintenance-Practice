@@ -1,5 +1,5 @@
 
-# Loading nessnecessary module
+# Loading necessary module
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -10,10 +10,9 @@ plt.style.use('ggplot')
 
 
 
-
 # -----------------------------------------------------------------------------
 # loading train_FD001.txt as "df_train_raw" by pandas read_csv
-df_train_raw = pd.read_csv(r'C:\Users\Dataset\NASA Turbofan Engine Degradation Simulation Data Set\train_FD001.txt', sep = " ", header = None)
+df_train_raw = pd.read_csv(r'C:\Users\PdM\Dataset\NASA Turbofan Engine Degradation Simulation Data Set\train_FD001.txt', sep = " ", header = None)
 
 # drop NA columns
 df_train_raw.drop([26,27], axis = 1, inplace = True )
@@ -48,7 +47,7 @@ df_train_raw
 
 
 # loading test_FD001.txt as "df_test_raw" by pandas read_csv
-df_test_raw = pd.read_csv(r'C:\Users\Dataset\NASA Turbofan Engine Degradation Simulation Data Set\test_FD001.txt', sep = " ", header = None)
+df_test_raw = pd.read_csv(r'C:\Users\PdM\Dataset\NASA Turbofan Engine Degradation Simulation Data Set\test_FD001.txt', sep = " ", header = None)
 
 # drop NA columns
 df_test_raw.drop([26,27], axis = 1, inplace = True )
@@ -63,7 +62,7 @@ df_test_raw
 
 
 # loading RUL_FD001.txt as "TrueRUL" by pandas read_csv
-TrueRUL = pd.read_csv(r"C:\Users\Dataset\NASA Turbofan Engine Degradation Simulation Data Set\RUL_FD001.txt", sep = "\s", header = None)
+TrueRUL = pd.read_csv(r"C:\Users\PdM\Dataset\NASA Turbofan Engine Degradation Simulation Data Set\RUL_FD001.txt", sep = "\s", header = None)
 
 # rename the columns of "TrueRUL" column
 TrueRUL.columns = ['RUL'] 
@@ -121,14 +120,14 @@ variation_sor  = variation_sor.add_legend()
 # Dimension Reduction
 
 # STEP1
-# calculate sd (standard deviation) for each variables and rank it.
+# calculate sd (standard deviation) for each variable and rank it.
 featurs_top_var = df_train_raw[features].std().sort_values(ascending = False)
 
 # see the result of ranking
 featurs_top_var
 
 # plot and compare the standard deviation of all features:
-featurs_top_var.plot(kind = 'bar', figsize = (12,10), title = "Features Standard Deviation")
+featurs_top_var.plot(kind = 'bar', figsize = (14,18), title = "Features Standard Deviation")
 
 """
  Let's see "featurs_top_var" first, the sd of {st3, s1, s5, s10, s16, s18, s19} are (almost) zero.
@@ -180,13 +179,13 @@ features_rd = [      'st1','st2',\
 
 
 # -----------------------------------------------------------------------------
-# Feature Combination 
+# Feature Construction
     
 """
  On the contrast to Dimension Reduction, we would like to add some
  artificial features to find a better potential model.
  In this phrase, we would add "Moving Average", and "Rolling Standard Deviation"
- into both trainin-set and test-set.
+ into both training-set and test-set.
 """
 
 # Build a customized function to add additional features (moving average and rolling standard deviation)
@@ -255,7 +254,7 @@ max_cycle_train
 
 """
  We hope that the moving average and rolling standard deviation we used
- woud be helpful to predicting the last cycle, so this number of iteration
+ would be helpful to predicting the last cycle, so this number of iterations
  may be close to the records of last cycle of each engine.
  The sd (standard deviation) of "max_cycle_train" seemed an useful option
  But! Let's see the statistics summary of last operation cycle of each engine of test-set
@@ -270,12 +269,12 @@ TrueRUL.describe()
  So, how should we do? 
  
  Don't forget that our goal is to build a generalized model for PdM.
- So, in this project, we decied to apply the 80/20 rule (Pareto principle)
+ So, in this project, we decided to apply the 80/20 rule (Pareto principle)
  to sd of "max_cycle_train" with 
 
  46.34 (the sd of "max_cycle_train") * 0.2 ~= 9.268 
- So we decide to use "10" interation to calculatethe the moving average 
- and rolling standard deviation for Feature Combination 
+ So we decide to use "10" interation to calculate the the moving average 
+ and rolling standard deviation for Feature Combination
  
  In order to prevent too complicated of practice, we would just use
  10 for calculation of moving average and rolling standard deviation
@@ -300,19 +299,17 @@ df_test_fx
 # -----------------------------------------------------------------------------
 # Summary
 """
- We did some simeple EDA and data wrangling in this phrase and fixed 
+ We did some simple EDA and data wrangling in this phrase and fixed 
  dataset and get three kind of features : {features_org, features_rd, features_plus} and 
  We would use these set and features for the following modeling.
 """
 
 
-
 # save "df_train_fx" into CSV file for modeling
-df_train_fx = df_train_fx.to_csv(r'C:\Users\123\Desktop\df_train_fx.csv',\
+df_train_fx = df_train_fx.to_csv(r'C:\Users\Desktop\df_train_fx.csv',\
                             index = None, header = True, encoding='utf-8')
 
 
-
 # save "df_test_fx" into CSV file for modeling
-df_test_fx = df_test_fx.to_csv(r'C:\Users\123\Desktop\df_test_fx.csv',\
+df_test_fx = df_test_fx.to_csv(r'C:\Users\esktop\df_test_fx.csv',\
                             index = None, header = True, encoding='utf-8')    

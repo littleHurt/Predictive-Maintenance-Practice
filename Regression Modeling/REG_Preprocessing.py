@@ -1,5 +1,5 @@
 
-# Loading nessnecessary module
+# Loading necessary module
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -129,7 +129,7 @@ def brief_reg_metrics(model_name, actual, predicted):
 
 
 # -----------------------------------------------------------------------------
-# Build a customized function to reform metrics for comparason of all regresson model
+# Build a customized function to reform metrics for comparison of all regression models
 
 def reform_reg_metrics(model_name, features_used,
                test_actual, test_predicted, train_actual, train_predicted):
@@ -261,7 +261,7 @@ df_train_lb
 df_test_lb = prepare_test_data( df_test_fx, TrueRUL , 30)
 df_test_lb
 
-# We would explain why we use 30 for classification labing in
+# We would explain why we use 30 for classification labeling in
 # "REG_Preprocessing" in my github.
 
 
@@ -311,9 +311,9 @@ y_test = df_test_lb['RUL']
 
 
 # -----------------------------------------------------------------------------
-# Label of modeles name:
+# Labels of models' name:
 """
-Before we test every classifiction model, we have to know the mark of {O, R, P}
+Before we test every classification model, we have to know the mark of {O, R, P}
     O stands for fit the model with original features [features_org]
     R stands for fit the model with  reduced features [features_rd]
     P stands for fit the model with     plus features [features_plus]
@@ -321,7 +321,7 @@ Before we test every classifiction model, we have to know the mark of {O, R, P}
 
 # Regression models
 """
-In this stage (modeling with validateion), we would try 6 kinds of regression models:
+In this stage (modeling with validation), we would try 6 kinds of regression models:
     
     LASSO
     Ridge Regression
@@ -331,5 +331,5 @@ In this stage (modeling with validateion), we would try 6 kinds of regression mo
     XGBoost Regression
     Neural Network Regression
 
-After total compassion, we would use the results to preceed classification model
+After total compassion, we would use the results to proceed classification model
 """

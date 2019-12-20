@@ -1,6 +1,6 @@
 
 
-# importing the necessary module
+# importing the necessary modules
 import pandas as pd
 import numpy as np
 from sklearn.metrics import confusion_matrix
@@ -10,23 +10,23 @@ from sklearn.metrics import confusion_matrix
 # ----------------------------------------------------------------------------- 
 # calculate expected cost 
 '''
-Acordinding to this paper:
+According to this paper:
     《Machine Learning for Predictive Maintenance - A Multiple Classifier Approach》
     https://pureadmin.qub.ac.uk/ws/portalfiles/portal/17844756/machine.pdf
 
 We could calculate benefit of Predictive Maintenance models from a customized
-cost-based formula. The similar idea are also shown in the textbook:    
+cost-based formula. The similar idea is also shown in the textbook:    
     《Data Science for Business: What You Need to Know about Data Mining and Data-Analytic Thinking》
     https://www.amazon.com/Data-Science-Business-Data-Analytic-Thinking/dp/1449361323
     
-Acordinding to the above idea, we would build a cost-based formula to estimate the 
+According to the above idea, we would build a cost-based formula to estimate the 
 benefit from the predictive maintenance models
 '''
 
 
 # ----------------------------------------------------------------------------- 
 # Build a customized function to create a dataframe including 
-# confuson metrics scores and cost of selected models
+# confusion metrics scores and cost of selected models
 
 def create_df_cost(model_name, y_test, y_pred):
 
@@ -38,7 +38,7 @@ def create_df_cost(model_name, y_test, y_pred):
         y_pred (series): Contains the predicted values
         
     Returns:
-        df_cost (dataframe): dataframe including confuson metrics scores
+        df_cost (dataframe): dataframe including confusion metrics scores
                                 and cost of selected models.
     """
     
@@ -47,11 +47,15 @@ def create_df_cost(model_name, y_test, y_pred):
   
     # Local parameters
     #--------------------------------------------------  
-    # average unexploited cycles (assumed from results of regression models)
-    p_ul = 25 * (cf_score[0,1] / len(y_test))
+    # amounts of unexploited cycles
+    # were it should be assumed from results of regression models
+    m_ul = 25
     
-    # unexploited break (percnettage, from 0 to 1)
-    p_ub = cf_score[1,0] / len(y_test) 
+    # percentage of overpredicted safe sample
+    p_ul = (cf_score[0,1] / len(y_test))
+    
+    # percnettage of unexploited break
+    p_ub = (cf_score[1,0] / len(y_test))
 
     # related cost of p_ul, with $USD unit
     c_bl = 5000 
@@ -61,7 +65,7 @@ def create_df_cost(model_name, y_test, y_pred):
     #--------------------------------------------------    
     
     # the cost-based formula
-    cost = ( cf_score[0,1] * p_ul * c_bl) + (p_ub * c_ub)
+    cost = ( m_ul * p_ul * c_bl) + (p_ub * c_ub)
     
     df_cf_cost = [[model_name, round(cost,0),\
                    cf_score[0,0], cf_score[0,1], cf_score[1,0], cf_score[1,1] ]]
@@ -103,7 +107,7 @@ bring the best benefit from our predictive maintenance models
 '''
 
 # save "df_cost_selected" into CSV file
-df_cost_selected = df_cost_selected.to_csv(r'C:\Users\123\Desktop\df_cost_selected.csv',\
+df_cost_selected = df_cost_selected.to_csv(r'C:\Users\Desktop\df_cost_selected.csv',\
                             index = None, header = True, encoding = 'utf-8')
     
     
@@ -111,25 +115,27 @@ df_cost_selected = df_cost_selected.to_csv(r'C:\Users\123\Desktop\df_cost_select
 # -----------------------------------------------------------------------------
 # Summary
     '''
-    We have build a set of predictive maintenance module by machine learning
-    approach on case of maintenance of aerospace engine.    
-
-    Our results could answer three question:
+    We have built a set of predictive maintenance modules by data science
+    approach on case of maintenance of aircraft engines and used a customed function
+    to calculate the expected cost to selected the best module.
+    
+    Our results could answer of two key questions:
         
-        1. Whether the engine will break in this running cycle?
+        1. Whether the engine will break in specific running period?
         2. How many unexploited cycles does the engine remain?
+
     '''
 
 
 # Extension of Future
     '''
-    This case just a simple off-line pracitce. The following actions may be
+    This case is just a simple off-line practice. The following actions may be
     helpful for extension of this project:    
         
-        1. Consult to domain experts of aerospace mechanical enginees
+        1. Consult to domain experts of aircraft mechanical engineers
         2. Try more feature engineering and experiments cross-validation
-        3. More detailed highper-marameters tuning for ML models
-        4. Try to build an ensemble models by multiple claasication threshold
+        3. More detailed hyperparameters tuning for ML models
+        4. Try to build an ensemble model by multiple classification threshold
     '''
     
     
@@ -138,7 +144,7 @@ df_cost_selected = df_cost_selected.to_csv(r'C:\Users\123\Desktop\df_cost_select
 # Reference
     '''
     1.
-    【Samimust/predictive-maintenance】Github
+    【Samimust/predictive-maintenance】GitHub
     https://github.com/Samimust/predictive-maintenance
     
     2.

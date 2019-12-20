@@ -1,6 +1,6 @@
 Model,Cost,TP,FP,FN,TN
-Gaussian Naive Bayesian(O),41250.0,70,5,1,24
-Gaussian Naive Bayesian(P),40000.0,71,4,2,23
-Decision Tree(P),61250.0,74,1,6,19
-Random Forest(R),71250.0,74,1,7,18
-XGBoost(O),71250.0,74,1,7,18
+Gaussian Naive Bayesian(O),16250,70,5,1,24
+Gaussian Naive Bayesian(P),25000,71,4,2,23
+Decision Tree(P),61250,74,1,6,19
+Random Forest(R),71250,74,1,7,18
+XGBoost(O),71250,74,1,7,18

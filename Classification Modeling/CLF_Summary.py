@@ -1,6 +1,6 @@
 
 
-# importing the necessary module
+# importing the necessary modules
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -28,7 +28,7 @@ ref_clf_metrics = pd.concat([ref_metrics_lgr, ref_metrics_knn,
                              ref_metrics_dtr, ref_metrics_rfc,
                              ref_metrics_xgb, ref_metrics_mlp], axis = 0)
 
-# see the result of combanition
+# see the result of combination
 ref_clf_metrics
 
 
@@ -51,7 +51,7 @@ ref_clf_metrics.sort_values( by = 'ROC AUC')
 
 
 # save "ref_clf_metrics" into CSV file
-ref_clf_metrics = ref_clf_metrics.to_csv(r'C:\Users\123\Desktop\ref_clf_metrics.csv',\
+ref_clf_metrics = ref_clf_metrics.to_csv(r'C:\Users\Desktop\ref_clf_metrics.csv',\
                             index = None, header = True, encoding='utf-8')
 
     
@@ -63,7 +63,7 @@ ref_clf_metrics = ref_clf_metrics.to_csv(r'C:\Users\123\Desktop\ref_clf_metrics.
     1. Most models perform well on Accuracy.
         (22/24 of them >= 90 or near 90 on Accuracy score).
 
-    2  Most models perform well on Precision.
+    2. Most models perform well on Precision.
         (18/24 of them >= 90 or near 90 on Precision score).
         
     3. Most models perform well on ROC-AUC.
@@ -79,7 +79,7 @@ ref_clf_metrics = ref_clf_metrics.to_csv(r'C:\Users\123\Desktop\ref_clf_metrics.
     6. Generally, {Logistics Regression, k-NN, SVM} models with original features
         perform slightly better than same models with reduced features.
     
-    7. For these 8 kinds of classification models, almost over half of them perform
+    7. For these 8 kinds algorithm of classification models, almost over half of them perform
         better with plus features. {Logistic Regression, k-NN, SVM, Decision Tree,
         XGBoost}
     
@@ -91,23 +91,23 @@ ref_clf_metrics = ref_clf_metrics.to_csv(r'C:\Users\123\Desktop\ref_clf_metrics.
 
 
 # ----------------------------------------------------------------------------- 
-# Advanced comparision
+# Advanced comparison
 '''
-We want to select some models with better performance for advanced comparision.
+We want to select some models with better performance for advanced comparison.
 
     1. Let's rank "ref_clf_metrics" by:
-        "Recal" -> "F1 Score" -> "ROC-AUC" -> "Precision"
+        "Recall" -> "F1 Score" -> "ROC-AUC" -> "Precision"
     
     2. Gaussian Naive Bayesian models with all kinds of features seem good candidates,
-        but we dicided remove the model with reduced features which got worst result in
+        but we decided remove the model with reduced features which got worst result in
         models of Gaussian Naive Bayesian.
 
     3. Neural Network model with reduced features seem a good candidate which also
         perform well on Recall (0.92), but its Precision is too low (0.426).
-        So we would not consider it.
+        So, we would not consider it.
         
     4. Follow by top of ranking list of point 1, we would select models below
-        for advanced comparision:
+        for advanced comparison:
             
         Gaussian Naive Bayesian(O)
         Gaussian Naive Bayesian(P)
@@ -118,11 +118,11 @@ We want to select some models with better performance for advanced comparision.
 
 
 # ----------------------------------------------------------------------------- 
-# Build a customized function to create dataframe for miltiple comparision
+# Build a customized function to create dataframe for multiple comparison
 
 def create_compare_tb(model_name, clf, X_train, y_train, X_test, y_test):
     
-    """create dataframe to compare score of confusion mtrics and compute
+    """create dataframe to compare score of confusion metrics and compute
         cost from predictive maintenance models    
     
     Args:
@@ -163,7 +163,7 @@ def create_compare_tb(model_name, clf, X_train, y_train, X_test, y_test):
 
 
 # ----------------------------------------------------------------------------- 
-# prepare training/test data with original features for miltiple comparision
+# prepare training/test data with original features for multiple comparison
     
 df_train_lb = prepare_train_data( df_train_fx, 30)
 df_train_lb
@@ -182,7 +182,7 @@ y_test_O = df_test_lb['label_bc']
 
 
 # ----------------------------------------------------------------------------- 
-# prepare training/test data with reduced features for miltiple comparision
+# prepare training/test data with reduced features for multiple comparison
     
 df_train_lb = prepare_train_data(df_train_fx, 30)
 df_train_lb
@@ -191,7 +191,7 @@ df_test_lb = prepare_test_data(df_test_fx, TrueRUL, 30)
 df_test_lb
 
 
-features_used = features_rd # (or features_rd, features_plus) whcih is uesd in following ML model.
+features_used = features_rd # (or features_rd, features_plus) which is used in following ML model.
 
 X_train_R = df_train_lb[features_used]
 y_train_R = df_train_lb['label_bc']
@@ -202,7 +202,7 @@ y_test_R = df_test_lb['label_bc']
 
 
 # ----------------------------------------------------------------------------- 
-# prepare training/test data with plus features for miltiple comparision
+# prepare training/test data with plus features for multiple comparison
     
 df_train_lb = prepare_train_data(df_train_fx, 30)
 df_train_lb
@@ -211,7 +211,7 @@ df_test_lb = prepare_test_data(df_test_fx, TrueRUL, 30)
 df_test_lb
 
 
-features_used = features_plus # (or features_rd, features_plus) whcih is uesd in following ML model.
+features_used = features_plus # (or features_rd, features_plus) which is used in following ML model.
 
 X_train_P = df_train_lb[features_used]
 y_train_P = df_train_lb['label_bc']
@@ -222,7 +222,7 @@ y_test_P = df_test_lb['label_bc']
 
 
 # ----------------------------------------------------------------------------- 
-# set classification models and got metrics scores for miltiple comparision
+# set classification models and got metrics scores for multiple comparison
 
 clf_gnbO = GaussianNB()
 clf_gnbP = GaussianNB()

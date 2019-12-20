@@ -1,6 +1,6 @@
 
 
-# Loading nessnecessary module
+# Loading necessary modules
 import pandas as pd
 import numpy as np
 import scikitplot as skplt
@@ -10,7 +10,6 @@ plt.style.use('ggplot')
 
 from sklearn import metrics
 from sklearn import model_selection
-
 
 # -----------------------------------------------------------------------------
 # Build a customized function to add regression and classification labels into the training data.
@@ -97,8 +96,8 @@ def prepare_test_data ( input_df_test, df_truth, iteration):
 # Prepare the training data:
 
 # load the previous data
-df_train_fx = pd.read_csv(r'C:\Users\123\Desktop\df_train_fx.csv')
-df_test_fx  = pd.read_csv(r'C:\Users\123\Desktop\df_test_fx.csv')
+df_train_fx = pd.read_csv(r'C:\Users\Desktop\df_train_fx.csv')
+df_test_fx  = pd.read_csv(r'C:\Users\Desktop\df_test_fx.csv')
 
 
 # adding training labels to training data with 30 cycles for classification labing
@@ -111,15 +110,15 @@ df_train_lb
 df_test_lb = prepare_test_data( df_test_fx, TrueRUL , 30)
 df_test_lb
 
-# We have show that why we use 30 for classification labing in "REG_Preprocessing" in my github.
+# We have shown that why we use 30 for classification labeling in "REG_Preprocessing" in my GitHub.
 
 
 # save "df_train_fx" into CSV file for modeling
-df_train_lb = df_train_lb.to_csv(r'C:\Users\123\Desktop\df_train_lb.csv',\
+df_train_lb = df_train_lb.to_csv(r'C:\Users\Desktop\df_train_lb.csv',\
                             index = None, header = True, encoding='utf-8')
 
 # save "df_test_fx" into CSV file for modeling
-df_test_lb = df_test_lb.to_csv(r'C:\Users\123\Desktop\df_test_lb.csv',\
+df_test_lb = df_test_lb.to_csv(r'C:\Users\Desktop\df_test_lb.csv',\
                             index = None, header = True, encoding='utf-8')  
 
     
@@ -163,7 +162,7 @@ y_test = df_test_lb['label_bc']
 def classification_tuning(model_name, clf, features_used, params = None):
     
     """Perform cross-validation by training-set
-        and then do Grid Search  for hyper parameter tuning on test-set automatically.
+        and then do Grid Search for hyper parameter tuning on test-set automatically.
     
     Args:
         model_name (str): The model name identifier
@@ -245,7 +244,7 @@ def brief_clf_metrics(model_name, y_test, y_pred, y_score):
 
 
 # -----------------------------------------------------------------------------
-# Build a customized function to reform metrics for comparason of all regresson model
+# Build a customized function to reform metrics for comparison of all regression model
     
 def reform_clf_metrics(model_name, y_test, y_pred, y_score):
     
@@ -334,7 +333,7 @@ def plot_metrics(clf, X_train, y_train, X_test, y_test):
 # -----------------------------------------------------------------------------
 # Label of modeles name:
 """
-Before we test every classifiction model, we have to know the mark of {O, R, P}
+Before we test every classification model, we must the mark of {O, R, P}
     O stands for fit the model with original features [features_org]
     R stands for fit the model with  reduced features [features_rd]
     P stands for fit the model with     plus features [features_plus]
@@ -342,18 +341,18 @@ Before we test every classifiction model, we have to know the mark of {O, R, P}
 
 # Classifiction models
 """
-In this stage (modeling with validateion), we would try 8 kinds of classifiction models,
+In this stage (modeling with validateion), we would try 8 kinds of classification models,
     and find its best parameters:
     
     Logistics Regression
     k-NN
     SVM
-    Gaussian Naive Bayesian Classifiction
-    Decision Tree Classifiction
-    Random Forest Classifiction
-    XGBoost Classifiction
-    Neural Network Classifiction
+    Gaussian Naive Bayesian Classification
+    Decision Tree Classification
+    Random Forest Classification
+    XGBoost Classification
+    Neural Network Classification
 
-After total compassion, we would select the best 3 models (and its related training-set)
+After total comparison, we would select the best 5 models (and its related training-set)
 to perform the final test
 """

@@ -1,6 +1,6 @@
 
 
-# Loading nessnecessary module
+# Loading necessary module
 import pandas as pd
 import numpy as np
 import scikitplot as skplt
@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 %matplotlib inline  
 
-from sklearn import metrics  # mean_squared_error, mean_absolute_error, median_absolute_error, explained_variance_score, r2_score
-from sklearn import model_selection #import cross_val_score, StratifiedKFold
+from sklearn import metrics
+from sklearn import model_selection 
 
 from sklearn import linear_model
 from sklearn.preprocessing import PolynomialFeatures
@@ -22,8 +22,8 @@ from sklearn.neural_network import MLPRegressor
 
 # -----------------------------------------------------------------------------
 # load the previous data
-df_train_lb = pd.read_csv(r'C:\Users\123\Desktop\df_train_lb.csv')
-df_test_lb  = pd.read_csv(r'C:\Users\123\Desktop\df_test_lb.csv')
+df_train_lb = pd.read_csv(r'C:\Users\Desktop\df_train_lb.csv')
+df_test_lb  = pd.read_csv(r'C:\Users\Desktop\df_test_lb.csv')
 
 
 # a variable to hold the set of features to experiment with
@@ -47,7 +47,7 @@ features_rd = [ 'st1','st2',\
 #                  'sd1', 'sd2', 'sd3', 'sd4', 'sd5', 'sd6', 'sd7', 'sd8', 'sd9','sd10',\
 #                 'sd11','sd12','sd13','sd14','sd15','sd16','sd17','sd18','sd19','sd20','sd21']
 
-features_used = features_rd # (or features_rd, features_plus) whcih is uesd in following ML model.
+features_used = features_rd # (or features_rd, features_plus) which is used in following ML model. in following ML model.
 
 X_train = df_train_lb[features_used]
 y_train = df_train_lb['RUL']
@@ -130,7 +130,6 @@ plot_residual('Polynomial(R)', y_train_predict, y_train, y_test_predict, y_test)
 
 # -----------------------------------------------------------------------------
 # Decision Tree regressor
-
 
 dtrg = DecisionTreeRegressor(max_depth = 7, max_features = 13, random_state = 36) # best for features_rd
 #dtrg = DecisionTreeRegressor(max_depth = 6 , max_features = 23, random_state = 87) # best for features_plus

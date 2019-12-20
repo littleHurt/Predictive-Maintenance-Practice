@@ -1,6 +1,6 @@
 
 
-# Loading nessnecessary module
+# Loading necessary module
 
 import pandas as pd
 import numpy as np
@@ -11,13 +11,13 @@ plt.style.use('ggplot')
 from sklearn import metrics
 from sklearn import model_selection
 
-from sklearn.linear_model import LogisticRegression, SGDClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 
 from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.neural_network import MLPClassifier
 from xgboost import XGBClassifier
 
@@ -25,8 +25,8 @@ from xgboost import XGBClassifier
 
 # -----------------------------------------------------------------------------
 # load the previous data
-df_train_lb = pd.read_csv(r'C:\Users\123\Desktop\df_train_lb.csv')
-df_test_lb  = pd.read_csv(r'C:\Users\123\Desktop\df_test_lb.csv')
+df_train_lb = pd.read_csv(r'C:\Users\Desktop\df_train_lb.csv')
+df_test_lb  = pd.read_csv(r'C:\Users\Desktop\df_test_lb.csv')
 
 
 # a variable to hold the set of features to experiment with
@@ -51,7 +51,7 @@ features_plus = [ 'st1', 'st2','st3',\
                  'sd11','sd12','sd13','sd14','sd15','sd16','sd17','sd18','sd19','sd20','sd21']
 
     
-features_used = features_plus # (or features_rd, features_plus) whcih is uesd in following ML model.
+features_used = features_plus # (or features_rd, features_plus) which is used in following ML model.
 
 X_train = df_train_lb[features_used]
 y_train = df_train_lb['label_bc']

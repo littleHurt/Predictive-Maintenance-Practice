@@ -1,6 +1,6 @@
 
 
-# Loading nessnecessary module
+# Loading necessary modules
 
 import pandas as pd
 import numpy as np
@@ -25,8 +25,8 @@ from xgboost import XGBClassifier
 
 # -----------------------------------------------------------------------------
 # load the previous data
-df_train_lb = pd.read_csv(r'C:\Users\123\Desktop\df_train_lb.csv')
-df_test_lb  = pd.read_csv(r'C:\Users\123\Desktop\df_test_lb.csv')
+df_train_lb = pd.read_csv(r'C:\Users\Desktop\df_train_lb.csv')
+df_test_lb  = pd.read_csv(r'C:\Users\Desktop\df_test_lb.csv')
 
 
 # a variable to hold the set of features to experiment with
@@ -50,7 +50,7 @@ features_org = ['st1','st2','st3',\
 #                  'sd1', 'sd2', 'sd3', 'sd4', 'sd5', 'sd6', 'sd7', 'sd8', 'sd9','sd10',\
 #                 'sd11','sd12','sd13','sd14','sd15','sd16','sd17','sd18','sd19','sd20','sd21']
 
-features_used = features_org # (or features_rd, features_plus) whcih is uesd in following ML model.
+features_used = features_org # (or features_rd, features_plus) which is used in following ML model.
 
 X_train = df_train_lb[features_used]
 y_train = df_train_lb['label_bc']
